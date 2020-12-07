@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书架</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2253382_0rh8disv1br.css">
+    <link rel="stylesheet" href="./css/M_body.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/jquery-cookie-1.4.1.js"></script>
+    <script src="./js/Examples.js"></script>
+    <script src="./js/global.js"></script>
+</head>
+<body>
+    <header>
+        <div class="henger">
+            <span class="iconfont icon-daohanglan"></span>
+        </div>
+        <div class="seach">
+            <span class="iconfont icon-sousuo"></span>
+        </div>
+    </header>
+    <div id="M_body">
+    </div>
+    <footer>
+        <ul>
+            <li>
+                <a href="#" class="bookShelf" onclick="getBody(this)">
+                    <span class="iconfont icon-shujia"></span>
+                    <p>书架</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="bookCity" onclick="getBody(this)">
+                    <span class="iconfont icon-shuchengjiaohu"></span>
+                    <p>书城</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="mySelf" onclick="getBody(this)">
+                    <span class="iconfont icon-jianyinglogin1"></span>
+                    <p>我的</p>
+                </a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
+<script>
+    function getBody(a){
+        $("#M_body").load(`./${$(a).attr("class")}.html`)
+        $("footer a").css("color","rgb(156, 156, 156)");
+        $(a).css("color","rgb(193, 57, 43)");
+    }
+    $(function(){
+        falseBody();
+        $(".bookShelf").css("color","rgb(193, 57, 43)");
+        $("#M_body").load("./bookShelf.html");
+    });
+</script>

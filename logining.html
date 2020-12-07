@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首次加载页面</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/logining.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/jquery-cookie-1.4.1.js"></script>
+    <script src="./js/Examples.js"></script>
+    <script src="./js/global.js"></script>
+</head>
+<body>
+    <div class="sex_main">
+        <div class="top">
+            <p>告诉我性别</p>
+            <span>给你专属主页哦~</span>
+        </div>
+        <div class="bottom">
+            <div class="sex_man">
+                <img src="./image/man_msg.png" alt="">
+                <a href="#">
+                    <div class="man">
+                        <img src="./image/man_avatar_dafult.png" alt="" data-sex="男">
+                    </div>
+                </a>
+                <p>我是男生</p>
+            </div>
+            <div class="sex_woman">
+                <img src="./image/woman_msg.png" alt="">
+                <a href="#">
+                    <div class="man">
+                        <img src="./image/woman_avatar_default.png" alt="" data-sex="女">
+                    </div>
+                </a>
+                <p>我是女生</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function(){
+        $("a").click((e) => {
+            $.get("./data/user.json",{},function(data){
+                data.sex = $(e.target).attr("data-sex");
+                window.localStorage.setItem("userInfo",JSON.stringify(data));
+            });
+        })
+    });
+</script>

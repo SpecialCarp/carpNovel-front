@@ -1,0 +1,78 @@
+body,html{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.sex_main{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sex_main .top{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.top p{
+    font-size: 1.5rem;
+}
+
+.top span{
+    color: #aaa;
+}
+
+.sex_main .bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom>div{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.bottom .sex_man>img{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+.bottom .sex_woman>img{
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 45%;
+    right: 0;
+    transform: translate(-50%, 0);
+}
+
+.bottom>div a img{
+    width: 50%;
+    height: 50%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.bottom>div p{
+    margin-top: .5rem;
+}
+
+.sex_man p{
+    color: rgb(1, 172, 244);
+}
+
+.sex_woman{
+    color: rgb(173, 47, 30);
+}
