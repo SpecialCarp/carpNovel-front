@@ -26,7 +26,7 @@ function falseBody() {
         getBody.style.overflowY = 'hidden';
         getMBody.style = 'display: block;width: 100%;overflow: auto;';
         // 创建变量储存滚动条样式
-        var overflowText = '#M_body::-webkit-scrollbar{display:block;width:16px;}#M_body::-webkit-scrollbar-thumb{background-color:#8a8a8a;border:1px solid #fff;}#M_body::-webkit-scrollbar-track-piece{background-color:#fff;}';
+        /* var overflowText = '#M_body::-webkit-scrollbar{display:block;width:16px;}#M_body::-webkit-scrollbar-thumb{background-color:#8a8a8a;border:1px solid #fff;}#M_body::-webkit-scrollbar-track-piece{background-color:#fff;}';
         var getStyle = document.getElementsByTagName('style')[0];
         var text = document.createTextNode(overflowText);   //创建节点
         if(getStyle == null){
@@ -35,7 +35,7 @@ function falseBody() {
             document.getElementsByTagName("head")[0].appendChild(style);
         }else{
             getStyle.appendChild(text);
-        }
+        } */
 
         // 设置变量 MBodyHeight 储存M_body的高度
         var MBodyHeight = getHtml.clientHeight;
@@ -121,4 +121,21 @@ function countdown() {
         lefts = Math.floor(lefttime / 1000 % 60)            //计算秒种数 数字类型
         ;
     console.log(lefth + ":" + leftm + ":" + lefts);
+}
+
+
+function parseLocal(key){
+    return JSON.parse(window.localStorage.getItem(key));
+}
+
+function stringifyLocal(key, value){
+    window.localStorage.setItem(key, JSON.stringify(value));
+}
+
+function parseSession(key){
+    return JSON.parse(window.sessionStorage.getItem(key));
+}
+
+function stringifySession(key, value){
+    window.sessionStorage.setItem(key, JSON.stringify(value));
 }

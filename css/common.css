@@ -22,3 +22,12 @@ input,textarea,button{
     border: none;
     outline:none;
 }
+
+@font-face {
+    font-family: 'Prague Love';
+    src: url('../font/Prague Love.mrc');
+}
+
+html{
+    font-family: 'Prague Love';
+}

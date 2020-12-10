@@ -1,11 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的</title>
+    <style>
+        #M_body {
+            background-color: rgb(241, 241, 241);
+        }
+
+        #M_body .header {
+            width: 100%;
+            height: 8rem;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            color: #000;
+        }
+
+        #M_body .header a .user_avatar {
+            margin-bottom: .3125rem;
+            border-radius: 100%;
+            overflow: hidden;
+        }
+
+        #M_body .user_avatar {
+            width: 5rem;
+            height: 5rem;
+        }
+
+        #M_body .user_avatar img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #M_body .user_account {
+            min-width: 3rem;
+            max-width: 8rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            padding: 0 .4rem;
+            border-radius: .4rem;
+            background-color: rgb(241, 241, 241);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #M_body .user_config ul {
+            width: 100%;
+        }
+
+        #M_body .user_config li {
+            width: 98%;
+            margin: 0 auto;
+            background-color: #fff;
+            margin-top: .75rem;
+        }
+
+        #M_body .user_config li .config {
+            height: 3rem;
+            line-height: 2.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #M_body .user_config li .config_right span {
+            font-size: .75rem;
+            margin-right: .8rem;
+            color: rgb(153, 153, 153);
+        }
+
+        #M_body .user_config li .config .config_left {
+            display: flex;
+            margin-left: .8rem;
+        }
+
+        #M_body .user_config li .config .config_left p {
+            margin-left: .4rem;
+        }
+
+        #M_body .user_config li .config:nth-child(2) {
+            border-top: .0625rem solid rgb(237, 237, 237);
+        }
+    </style>
 </head>
+
 <body>
-    我的
+    <div class="header">
+    </div>
+    <script>
+        function login() {
+            window.location.href = "./login.html"
+        }
+        console.log($("footer a[data-title='mySelf']").css("color") == "rgb(193, 57, 43)");
+            if($("footer a[data-title='mySelf']").css("color") == "rgb(193, 57, 43)"){
+                var user = parseLocal("userInfo");
+                if (user.username != "" && user.avatar != "") {
+                    $(".header").html(`
+                    <a href="#" onclick="">
+                        <div class="user_avatar">
+                            <img src="${user.avatar}" alt="">
+                        </div>
+                        <div class="user_account">${user.username}</div>
+                    </a>
+                `)
+                } else {
+                    $(".header").html(`
+                        <a href="#" onclick="login()">
+                            <div class="user_avatar">
+                                <img src="./image/man_avatar_default.png" alt="">
+                            </div>
+                            <div class="user_account">登录</div>
+                        </a>
+                    `)
+                }
+            }
+    </script>
+    <div class="user_config">
+        <ul>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-youjian" style="color:rgb(48, 136, 226);font-size: 1.6rem;"></span>
+                        <p>消息通知</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-lishi" style="color: rgb(24, 132, 233);font-size: 1.5rem;"></span>
+                        <p>最近浏览</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-shudanliebiao-shu"
+                            style="color: rgb(24, 132, 233);font-size: 1.3rem;"></span>
+                        <p>我的书单</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-fenxiang" style="color:rgb(247, 203, 61);font-size: 1.1rem;"></span>
+                        <p>分享应用</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-huancun" style="color:rgb(30, 131, 225);font-size: 1.1rem;"></span>
+                        <p>缓存管理</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-huanfu" style="color: rgb(48, 178, 234);font-size: 1.3rem;"></span>
+                        <p>换肤</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-icon" style="color: rgb(231, 90, 88);font-size: 1.5rem;"></span>
+                        <p>夜间模式</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="config">
+                    <div class="config_left">
+                        <span class="iconfont icon-shezhi" style="color: rgb(36, 131, 220);font-size: 1.4rem;"></span>
+                        <p>设置</p>
+                    </div>
+                    <div class="config_right">
+                        <span class="iconfont icon-youfanye"></span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </body>
+
 </html>

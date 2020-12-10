@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>空书架</title>
+    <style>
+        .bookshelf{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+        .bookshelf img{
+            width: 100%;
+            height: auto;
+        }
+        .bookshelf p{
+            margin: 1rem 0;
+        }
+        .bookshelf span{
+            display: block;
+            width: 80%;
+            height: 2rem;
+            background-color:  rgb(193, 57, 43);
+            margin: 0 auto;
+            line-height: 2rem;
+            color: #fff;
+            border-radius: 0.1875rem;
+        }
+    </style>
 </head>
 <body>
-    书架为空
+    <div class="bookshelf">
+        <img src="./image/booknone.png" alt="">
+        <p>用您喜欢的小说装满书架吧</p>
+        <span>去书城看看</span>
+    </div>
 </body>
 </html>
+<script>
+    $(".bookshelf span").click(()=>{
+        $(".bookCity").trigger("click");
+    })
+</script>

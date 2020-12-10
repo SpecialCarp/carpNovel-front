@@ -22,7 +22,7 @@
                 <img src="./image/man_msg.png" alt="">
                 <a href="#">
                     <div class="man">
-                        <img src="./image/man_avatar_dafult.png" alt="" data-sex="男">
+                        <img src="./image/man_avatar_default.png" alt="" data-sex="男">
                     </div>
                 </a>
                 <p>我是男生</p>
@@ -46,8 +46,14 @@
         $("a").click((e) => {
             $.get("./data/user.json",{},function(data){
                 data.sex = $(e.target).attr("data-sex");
-                window.localStorage.setItem("userInfo",JSON.stringify(data));
+                stringifyLocal("userInfo",data);
             });
+            $.get("./data/bookshelf.json",{},function(data){
+                stringifyLocal("bookShelf",data);
+                var bookList = JSON.parse(window.localStorage.getItem("bookShelf"));
+                console.log(bookList);
+            })
+            window.location.href="./index.html"
         })
     });
 </script>

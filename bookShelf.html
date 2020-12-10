@@ -4,15 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>书架</title>
+    <style>
+        #M_body .bookShelfInfo ul{
+            --long:6rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        #M_body .bookShelfInfo li{
+            margin: 1rem 1rem 0;
+        }
+        #M_body .bookShelfInfo li:last-child:nth-child(3n + 2){
+            margin-right: calc((100% - var(--long)) / 2 * 1);
+        }
+        #M_body .bookShelfInfo li .book_avatar{
+            width: var(--long);
+            height: calc(var(--long)*1.3);
+        }
+        #M_body .book_avatar img{
+            width: 100%;
+            height: 100%;
+        }
+        #M_body .bookShelfInfo li p{
+            height: 1.5rem;
+            margin-left: .25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.9375rem;
+        }
+    </style>
 </head>
 <body>
-    书架
+    <div class="bookShelfInfo">
+        <ul>
+        </ul>
+    </div>
 </body>
 </html>
+
+<script>
+    function getBookShelf(u_id){
+        $.ajax({
+            url : "",
+            data : {
+                id : u_id
+            },
+            contentType : "json",
+            type : "post",
+            dataType : "json",
+            success : (ruselt)=>{
+                console.log(ruselt)
+                stringifyLocal("")
+            },
+            error : ()=>{
+
+            }
+        });
+    }
+</script>
+
+<!-- 书架刷新 -->
 <script>
     $(function(){
-        var bookList = JSON.parse(window.localStorage.getItem("bookShelf"));
-        if(bookList == null || bookList.length == 0){
+        var bookShelf = parseLocal("bookShelf");
+        if(bookShelf != null && bookShelf.length > 0){
+            var bookShelfInfoHtml = "";
+            $.each(bookShelf,(index,item)=>{
+                bookShelfInfoHtml += `
+                    <li data-id="${item.id}">
+                        <div class="book_avatar">
+                            <img src="${item.avatar}" alt="">
+                        </div>
+                        <p>${item.title}</p>
+                    </li>`
+            });
+            $(".bookShelfInfo ul").html(bookShelfInfoHtml)
+        }else{
             $("#M_body").load("./bookShelf-none.html")
         }
     })
