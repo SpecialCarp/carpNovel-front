@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2253382_h0123gzxp3c.css">
+    <link rel="stylesheet" href="./css/M_body.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/jquery-cookie-1.4.1.js"></script>
+    <script src="./js/Examples.js"></script>
+    <script src="./js/global.js"></script>
+</head>
+<body>
+    <header>
+        <span class="iconfont icon-zuofanye" onclick="getPrevious()"></span>
+        <p>用户注册</p>
+        <span></span>
+    </header>
+    <div id="SignUp_body">
+        <div class="from">
+            <div class="user_account">
+                <label for="account"><span class="iconfont icon-yonghu"></span></label>
+                <input type="text" name="" id="account" placeholder="请输入手机号（非必填）">
+            </div>
+            <div class="user_password">
+                <label for="password"><span class="iconfont icon-mima"></span></label>
+                <input type="password" name="" id="password" placeholder="请输入密码">
+                <span class="password_msg" style="display:none;position: absolute;right: 0;color: rgb(193, 57, 43);">请输入密码</span>
+            </div>
+            <div class="user_password">
+                <label for="confirm_password"><span class="iconfont icon-mima"></span></label>
+                <input type="password" name="" id="confirm_password" placeholder="请再次输入密码">
+                <span class="confirm_password_msg" style="display:none;position: absolute;right: 0;color: rgb(193, 57, 43);">请再次输入密码</span>
+                <span class="msg" style="display:none;position: absolute;right: 0;color: rgb(193, 57, 43);">两次密码不一致</span>
+            </div>
+            <p style="padding-top: .5rem;"><span class="iconfont icon-xingxing" style="color:rgb(193, 57, 43);font-size: .7rem;"></span><span style="color:#555;font-size: .8rem;">邮箱是您找回密码的凭证，请正确填写</span></p>
+            <div class="user_email">
+                <label for="email"><span class="iconfont icon-youxiang"></span></label>
+                <input type="text" name="" id="email" placeholder="请输入邮箱">
+                <span class="email_msg" style="display:none;position: absolute;right: 0;color: rgb(193, 57, 43);">请输入邮箱</span>
+            </div>
+            <button>注册</button>
+        </div>
+        <div class="protocol"><span>注册既代表同意<a href="#">使用协议</a>和<a href="#">隐私政策</a></span></div>
+    </div>
+</body>
+</html>
+<script>
+    function getPrevious(){
+        window.history.go(-1);
+    }
+</script>
+<script>
+    for (let i = 0; i < 10; i++ ){console.log(Math.random())}
+</script>
+<script>
+    $(function(){
+        $("#confirm_password").change(function(){
+            if($(this).val() != $("#password").val()){
+                $(".msg").show()
+            }else{
+                $(".msg").hide()
+            }
+        })
+        $("#password").focus(function(){
+            $(".password_msg").hide();
+        })
+        $("#confirm_password").focus(function(){
+            $(".confirm_password_msg").hide();
+        })
+        $("#email").focus(function(){
+            $(".email_msg").hide();
+        })
+        $("button").click(function(){
+            var esc = 0;
+            if($("#password").val()==""){
+                esc++;
+                $(".password_msg").show();
+            }
+            if($("#confirm_password").val()==""){
+                esc++;
+                $(".confirm_password_msg").show();
+            }
+            if($("#email").val()==""){
+                esc++;
+                $(".email_msg").show();
+            }
+            if(esc==0){
+                console.log("esc");
+            }
+        })
+    })
+</script>

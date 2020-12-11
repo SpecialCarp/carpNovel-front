@@ -28,6 +28,6 @@ input,textarea,button{
     src: url('../font/Prague Love.mrc');
 }
 
-html{
+html,button,input::-webkit-input-placeholder{
     font-family: 'Prague Love';
 }

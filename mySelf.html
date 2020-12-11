@@ -100,14 +100,27 @@
             if($("footer a[data-title='mySelf']").css("color") == "rgb(193, 57, 43)"){
                 var user = parseLocal("userInfo");
                 if (user.username != "" && user.avatar != "") {
-                    $(".header").html(`
-                    <a href="#" onclick="">
-                        <div class="user_avatar">
-                            <img src="${user.avatar}" alt="">
-                        </div>
-                        <div class="user_account">${user.username}</div>
-                    </a>
-                `)
+                    var headerHtml = ``;
+                    if(user.avatar==""){
+                        headerHtml = `
+                            <a href="#" onclick="">
+                                <div class="user_avatar">
+                                    <img src="./image/man_avatar_default.png" alt="">
+                                </div>
+                                <div class="user_account">${user.username}</div>
+                            </a>
+                        `
+                    }else{
+                        headerHtml += `
+                            <a href="#" onclick="">
+                                <div class="user_avatar">
+                                    <img src="${user.avatar}" alt="">
+                                </div>
+                                <div class="user_account">${user.username}</div>
+                            </a>
+                        `
+                    }
+                    $(".header").html(headerHtml);
                 } else {
                     $(".header").html(`
                         <a href="#" onclick="login()">
